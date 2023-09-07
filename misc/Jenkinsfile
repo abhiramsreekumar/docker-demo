@@ -12,7 +12,7 @@ node {
      }
    }
    stage('docker build') {
-      def dockimg =docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.')
+      def dockimg = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.')
       
    }
    stage('Complete') {
