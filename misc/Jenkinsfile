@@ -13,9 +13,10 @@ node {
    }
    stage('docker build') {
       def dockimg =docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.')
-      docking.run(['-e -p 8080:8080'])
+      
    }
    stage('Complete') {
         echo "Build Complete"
+        docking.run(['-e -p 8080:8080'])
    }
 }
