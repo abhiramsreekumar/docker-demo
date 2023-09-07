@@ -13,7 +13,7 @@ node {
    }
    stage('docker build') {
       def app = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.')
-      app.run()
+      app.run([-p "8080:8080"])
       
    }
    stage('Complete') {
