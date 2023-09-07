@@ -17,6 +17,6 @@ node {
    }
    stage('Complete') {
         echo "Build Complete"
-        docking.run(['-e -p 8080:8080'])
+        
    }
 }
