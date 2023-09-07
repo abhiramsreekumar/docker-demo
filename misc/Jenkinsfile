@@ -11,8 +11,10 @@ node {
        sh 'npm test'
      }
    }
-   stage('docker build/push') {
+   stage('docker build') {
       docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.')
-        echo "Docker Done"
+   }
+   stage('Complete') {
+        echo "Build Complete"
    }
 }
