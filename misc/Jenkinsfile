@@ -12,7 +12,8 @@ node {
      }
    }
    stage('docker build') {
-      docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.')
+      def app = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.')
+      app.run()
       
    }
    stage('Complete') {
