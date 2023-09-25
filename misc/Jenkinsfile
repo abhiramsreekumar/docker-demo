@@ -12,8 +12,7 @@ node {
      }
    }
    stage('docker build') {
-      #def app = docker.build("wardviaene/docker-nodejs-demo:${commit_id}", '.')
-      #app.run([-p 8081:8080])
+      
       echo "Docker Future"
       
    }
