@@ -5,10 +5,20 @@ node {
      sh "git rev-parse --short HEAD > .git/commit-id"                        
      commit_id = readFile('.git/commit-id').trim()
    }
-   stage('test') {
+   stage('Install') {
      nodejs(nodeJSInstallationName: 'nodejs') {
        sh 'npm install --only=dev'
        sh 'npm test'
+     }
+   }
+   stage('Test') {
+    nodejs(nodeJSInstallationName: 'nodejs') {
+       sh 'npm test'
+     }
+   }
+   stage('Address Non attention issues') {
+    nodejs(nodeJSInstallationName: 'nodejs') {
+       sh 'npm audit fix'
      }
    }
    stage('docker build') {
@@ -18,7 +28,6 @@ node {
    }
    stage('Complete') {
         echo "Build Complete"
-        echo "hi"
         
    }
 }
